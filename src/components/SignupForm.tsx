@@ -135,12 +135,6 @@ const SignupForm: React.FC = () => {
       </p>
       
       <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-        {/* Form error message */}
-        {formError && (
-          <div className="p-3 rounded-md bg-red-50 border border-red-200 text-red-600 text-sm">
-            {formError}
-          </div>
-        )}
         {/* Name field with icon */}
         <div className="slide-up" style={{ animationDelay: '100ms' }}>
           <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">

@@ -1,68 +1,68 @@
 'use client'
 
-import React from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Button from '@/components/Button';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useSearchParams } from 'next/navigation';
+import React, { Suspense } from 'react'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import Button from '@/components/Button'
+import Image from 'next/image'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { useSearchParams } from 'next/navigation'
 
-export default function ThankYouPage() {
-  const searchParams = useSearchParams();
-  const name = searchParams.get('name') || 'there';
-  const isExisting = searchParams.get('existing') === 'true';
-  
+// ✅ All your content and animations moved here
+function ThankYouContent() {
+  const searchParams = useSearchParams()
+  const name = searchParams.get('name') || 'there'
+  const isExisting = searchParams.get('existing') === 'true'
+
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeInOut" as const }
-    }
-  };
-  
+      transition: { duration: 0.6, ease: 'easeInOut' as const },
+    },
+  }
+
   const staggerChildren = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-    }
-  };
-  
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  }
+
   const checkmarkAnimation = {
     hidden: { opacity: 0, scale: 0.5, pathLength: 0 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       pathLength: 1,
-      transition: { 
-        duration: 0.8, 
-        ease: "easeInOut" as const,
-        delay: 0.2
-      }
-    }
-  };
+      transition: {
+        duration: 0.8,
+        ease: 'easeInOut' as const,
+        delay: 0.2,
+      },
+    },
+  }
 
   const pulseAnimation = {
     hidden: { scale: 0.8, opacity: 0 },
-    visible: { 
+    visible: {
       scale: [1, 1.05, 1],
       opacity: 1,
-      transition: { 
+      transition: {
         scale: {
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: 'reverse' as const,
           duration: 2,
-          ease: "easeInOut" as const
+          ease: 'easeInOut' as const,
         },
-        opacity: {
-          duration: 0.4
-        }
-      }
-    }
-  };
+        opacity: { duration: 0.4 },
+      },
+    },
+  }
 
   const floatAnimation = {
     hidden: { y: 0, opacity: 0 },
@@ -72,22 +72,19 @@ export default function ThankYouPage() {
       transition: {
         y: {
           repeat: Infinity,
-          repeatType: "reverse" as const,
+          repeatType: 'reverse' as const,
           duration: 3,
-          ease: "easeInOut" as const
+          ease: 'easeInOut' as const,
         },
-        opacity: {
-          duration: 0.4
-        }
-      }
-    }
-  };
+        opacity: { duration: 0.4 },
+      },
+    },
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#f8fafc] to-[#f1f5f9] overflow-hidden">
       <Header />
-      
-      <main className="flex-grow relative pt-16 md:pt-20">
+       <main className="flex-grow relative pt-16 md:pt-20">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
           {/* Large blue gradient blob */}
@@ -188,13 +185,13 @@ export default function ThankYouPage() {
                   {isExisting ? (
                     <>
                       Welcome back, <span className="font-semibold text-[var(--deep-blue-light)]">{name}</span>! 
-                      <span className="block mt-2">You're already on our waitlist, so you're all set!</span>
+                      <span className="block mt-2">You&apos;re already on our waitlist, so you&apos;re all set!</span>
                       <span className="block mt-2 text-gray-600">We appreciate your enthusiasm and will notify you when Eutopia ID launches.</span>
                     </>
                   ) : (
                     <>
                       Thanks, <span className="font-semibold text-[var(--deep-blue-light)]">{name}</span>! 
-                      <span className="block mt-2">You'll be the first to know when Eutopia ID launches.</span>
+                      <span className="block mt-2">You&apos;ll be the first to know when Eutopia ID launches.</span>
                       <span className="block mt-2 text-gray-600">Until then, share this with someone you love — because their life matters too.</span>
                     </>
                   )}
@@ -243,7 +240,7 @@ export default function ThankYouPage() {
                 >
                   <div className="h-full flex flex-col justify-center">
                     <h3 className="text-base font-semibold text-green-600 mb-1">Coming Soon</h3>
-                    <p className="text-xs text-gray-600 line-clamp-3">We're preparing for launch!</p>
+                    <p className="text-xs text-gray-600 line-clamp-3">We&apos;re preparing for launch!</p>
                   </div>
                 </motion.div>
               </div>
@@ -264,7 +261,7 @@ export default function ThankYouPage() {
                         text: 'I just joined the Eutopia ID waitlist. You should too!',
                         url: window.location.origin,
                       }) : 
-                      alert('Share this link with your friends: ' + window.location.origin);
+                      alert(`Share this link with your friends: ${window.location.origin}`);
                   }}
                 >
                   <span className="relative z-10 flex items-center">
@@ -285,12 +282,12 @@ export default function ThankYouPage() {
               className="mt-8"
               variants={fadeIn}
             >
-              <a href="/" className="inline-flex items-center text-[var(--deep-blue-light)] hover:text-[var(--professional-red)] transition-colors py-2 px-4 rounded-lg hover:bg-blue-50/50">
+              <Link href="/" className="inline-flex items-center text-[var(--deep-blue-light)] hover:text-[var(--professional-red)] transition-colors py-2 px-4 rounded-lg hover:bg-blue-50/50">
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
                 Return to Home
-              </a>
+              </Link>
             </motion.div>
             
             {/* Professional decorative element */}
@@ -303,8 +300,16 @@ export default function ThankYouPage() {
           </motion.div>
         </div>
       </main>
-      
       <Footer />
     </div>
-  );
+  )
+}
+
+// ✅ Page wrapper with Suspense
+export default function ThankYouPage() {
+  return (
+    <Suspense fallback={<p className="text-center mt-10">Loading...</p>}>
+      <ThankYouContent />
+    </Suspense>
+  )
 }

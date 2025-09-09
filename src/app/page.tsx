@@ -1,7 +1,6 @@
 'use client'
 
 import Header from "@/components/Header";
-import { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import Button from "@/components/Button";
 import Footer from "@/components/Footer";
@@ -587,7 +586,7 @@ export default function Home() {
                       <span className="text-xl font-bold">1</span>
                     </div>
                     <p className="text-xl ml-6 mt-2">
-                      What kills Nigerians isn't always the injury. It's the <span className="text-[var(--professional-red)] font-semibold">guesswork</span>. Eutopia ID changes that.
+                      What kills Nigerians isn&apos;t always the injury. It&apos;s the <span className="text-[var(--professional-red)] font-semibold">guesswork</span>. Eutopia ID changes that.
                     </p>
                   </div>
                   

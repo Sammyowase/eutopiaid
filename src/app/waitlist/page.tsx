@@ -183,7 +183,7 @@ export default function SignupPage() {
                   >
                     <div className="h-full flex flex-col justify-center">
                       <h3 className="text-sm sm:text-base md:text-lg font-semibold text-[var(--professional-red)] mb-1 sm:mb-2">Life Saving</h3>
-                      <p className="text-xs sm:text-sm text-gray-600 line-clamp-3">Provides critical medical info when you can't communicate</p>
+                      <p className="text-xs sm:text-sm text-gray-600 line-clamp-3">Provides critical medical info when you can&apos;t communicate</p>
                     </div>
                   </motion.div>
                 </div>
@@ -213,7 +213,7 @@ export default function SignupPage() {
                     </div>
                     <div>
                       <p className="text-gray-700 italic mb-3 text-sm sm:text-base relative">
-                        "As an emergency physician, I've seen how critical immediate access to medical information can be. The Eutopia ID bracelet is a game-changer for patient care in emergencies."
+                        &quot;As an emergency physician, I&apos;ve seen how critical immediate access to medical information can be. The Eutopia ID bracelet is a game-changer for patient care in emergencies.&quot;
                       </p>
                       <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
                         <p className="text-sm font-medium text-[var(--deep-blue-dark)]">
