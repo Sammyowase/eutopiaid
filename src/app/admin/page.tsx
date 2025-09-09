@@ -15,7 +15,7 @@ const AdminDashboard: React.FC = () => {
     loading: false,
     error: null
   });
-  const router = useRouter();
+ 
 
   // Check authentication
   useEffect(() => {

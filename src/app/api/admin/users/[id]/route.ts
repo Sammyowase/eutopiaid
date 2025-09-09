@@ -25,35 +25,32 @@ const verifyAdmin = (request: NextRequest): boolean => {
 };
 
 // DELETE handler to delete a user by ID
+
 export async function DELETE(
   request: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { params } = context;
-  console.log("DELETE request received for user ID:", params.id);
+  const { id } = await context.params;  // 👈 await is required now
+  console.log("DELETE request received for user ID:", id);
 
   if (!verifyAdmin(request)) {
     console.log("Authentication failed for delete request");
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
-  const userId = params.id;
-
   try {
     const user = await prisma.user.findUnique({
-      where: { id: userId },
+      where: { id },
     });
 
     if (!user) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
-    await prisma.user.delete({
-      where: { id: userId },
-    });
+    await prisma.user.delete({ where: { id } });
 
     return NextResponse.json(
-      { message: "User deleted successfully", userId },
+      { message: "User deleted successfully", userId: id },
       { status: 200 }
     );
   } catch (err) {
@@ -67,3 +64,4 @@ export async function DELETE(
     );
   }
 }
+
