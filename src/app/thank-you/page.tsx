@@ -86,7 +86,7 @@ export default function ThankYouPage() {
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#f8fafc] to-[#f1f5f9] overflow-hidden">
       <Header />
       
-      <main className="flex-grow relative">
+      <main className="flex-grow relative pt-16 md:pt-20">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
           {/* Large blue gradient blob */}

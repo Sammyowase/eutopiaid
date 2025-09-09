@@ -469,6 +469,100 @@ body {
   animation: pulse-slow 6s ease-in-out infinite;
 }
 
+/* Circular animation keyframes */
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes reverse-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes orbit-clockwise {
+  0% {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-counter {
+  0% {
+    transform: rotate(0deg) translateX(90px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg) translateX(90px) rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-reverse-spin {
+  animation: reverse-spin 15s linear infinite;
+}
+
+.animate-orbit-clockwise {
+  animation: orbit-clockwise 12s linear infinite;
+}
+
+.animate-orbit-counter {
+  animation: orbit-counter 15s linear infinite;
+}
+
+/* Elegant shimmer effect for circles */
+@keyframes circle-shimmer {
+  0% {
+    opacity: 0.3;
+    background-position: -100% 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.3;
+    background-position: 200% 0;
+  }
+}
+
+.animate-circle-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.1) 0%, 
+    rgba(255,255,255,0.2) 25%, 
+    rgba(255,255,255,0.1) 50%, 
+    rgba(255,255,255,0.2) 75%, 
+    rgba(255,255,255,0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: circle-shimmer 8s ease-in-out infinite;
+}
+
+/* Elegant glow pulse for orbiting elements */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
 /* Responsive hover effects - only apply on devices that support hover */
 @media (hover: hover) {
   .hover-lift {

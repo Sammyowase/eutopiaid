@@ -62,7 +62,7 @@ export default function Home() {
       
       <Header />
       
-      <main className="flex-grow relative">
+      <main className="flex-grow relative pt-16 md:pt-20">
         {/* Enhanced decorative elements */}
         <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
           {/* Large blue gradient blob */}
@@ -176,14 +176,108 @@ export default function Home() {
               transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] }}
             >
               <div className="relative w-full aspect-square max-w-md mx-auto">
+                {/* Elegant circular animation elements - more proportional to the image */}
+                <div className="absolute inset-[-5%] flex items-center justify-center">
+                  {/* Outer rotating circle with gradient border and shimmer */}
+                  <div className="absolute w-[120%] h-[120%] rounded-full border-[1px] border-blue-300/40 animate-spin-slow overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-300/5 via-indigo-300/5 to-purple-300/5 opacity-30 animate-circle-shimmer"></div>
+                    <div className="absolute top-0 left-[-100%] h-full w-[50%] bg-gradient-to-r from-transparent via-white/20 to-transparent transform skew-x-[-20deg] animate-enhanced-shine" style={{ animationDelay: '3s' }}></div>
+                  </div>
+                  
+                  {/* Second outer circle with dots */}
+                  <div className="absolute w-[115%] h-[115%] rounded-full animate-reverse-spin">
+                    {/* Decorative dots along the circle */}
+                    {[...Array(24)].map((_, i) => (
+                      <div 
+                        key={i} 
+                        className={`absolute rounded-full bg-gradient-to-r ${
+                          i % 3 === 0 
+                            ? "from-blue-400/60 to-indigo-400/60 animate-glow-pulse" 
+                            : i % 3 === 1 
+                              ? "from-red-400/50 to-pink-400/50" 
+                              : "from-green-400/40 to-emerald-400/40"
+                        }`}
+                        style={{ 
+                          top: `${50 + 47 * Math.sin(i * (Math.PI / 12))}%`,
+                          left: `${50 + 47 * Math.cos(i * (Math.PI / 12))}%`,
+                          width: i % 6 === 0 ? '5px' : i % 4 === 0 ? '3px' : '2px',
+                          height: i % 6 === 0 ? '5px' : i % 4 === 0 ? '3px' : '2px',
+                          opacity: i % 2 === 0 ? 0.9 : 0.5,
+                          animationDelay: `${i * 0.2}s`
+                        }}
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Middle rotating circle with gradient */}
+                  <div className="absolute w-[110%] h-[110%] rounded-full border-[1px] border-red-200/30 animate-spin-slow" style={{ animationDuration: '25s' }}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-300/5 via-transparent to-red-200/5 opacity-20 animate-circle-shimmer" style={{ animationDelay: '2s' }}></div>
+                    
+                    {/* Additional decorative elements */}
+                    <div className="absolute top-[10%] right-[10%] w-3 h-3 rounded-full bg-red-400/20 blur-sm animate-float-slow"></div>
+                    <div className="absolute bottom-[15%] left-[20%] w-4 h-4 rounded-full bg-blue-400/20 blur-sm animate-float-medium" style={{ animationDelay: '1s' }}></div>
+                  </div>
+                  
+                  {/* Inner pulsing circle with elegant gradient */}
+                  <div className="absolute w-[105%] h-[105%] rounded-full border-[1px] border-blue-300/30 animate-pulse-slow">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-300/5 via-transparent to-indigo-300/5 opacity-20 animate-circle-shimmer" style={{ animationDelay: '1.5s' }}></div>
+                    
+                    {/* Subtle dashed inner border */}
+                    <div className="absolute w-[95%] h-[95%] top-[2.5%] left-[2.5%] rounded-full border-[1px] border-dashed border-white/20 animate-reverse-spin" style={{ animationDuration: '30s' }}></div>
+                  </div>
+                  
+                  {/* Orbiting elements */}
+                  <div className="absolute w-[120%] h-[120%]">
+                    {/* Orbiting elegant element 1 - Blue orb with inner glow */}
+                    <div className="absolute top-[5%] left-[50%] animate-orbit-clockwise">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400/80 to-indigo-500/80 shadow-lg shadow-blue-400/30 flex items-center justify-center animate-glow-pulse">
+                        <div className="w-3 h-3 rounded-full bg-gradient-to-br from-white/90 to-blue-100/80 animate-pulse-slow"></div>
+                        <div className="absolute inset-0 rounded-full border border-white/40 animate-spin-slow" style={{ animationDuration: '10s' }}></div>
+                      </div>
+                    </div>
+                    
+                    {/* Orbiting elegant element 2 - Red orb with rings */}
+                    <div className="absolute top-[50%] right-[5%] animate-orbit-counter z-10" style={{ animationDelay: '0.5s' }}>
+                      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-red-400/70 to-pink-500/70 shadow-lg shadow-red-400/30 flex items-center justify-center p-1 animate-glow-pulse" style={{ animationDelay: '1s' }}>
+                        <div className="w-full h-full rounded-full border-2 border-white/40 animate-reverse-spin" style={{ animationDuration: '10s' }}></div>
+                        <div className="absolute w-[130%] h-[130%] rounded-full border border-red-200/30 animate-spin-slow" style={{ animationDuration: '15s' }}></div>
+                        <div className="absolute w-[160%] h-[160%] rounded-full border border-dashed border-red-200/20 animate-reverse-spin" style={{ animationDuration: '20s' }}></div>
+                      </div>
+                    </div>
+                    
+                    {/* Orbiting elegant element 3 - Green orb with pulsing effect */}
+                    <div className="absolute bottom-[10%] left-[20%] animate-orbit-clockwise" style={{ animationDelay: '1s' }}>
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-br from-green-400/70 to-emerald-500/70 shadow-lg shadow-green-400/30 animate-glow-pulse" style={{ animationDelay: '2s' }}>
+                        <div className="absolute inset-0 rounded-full border border-white/40 animate-pulse-slow"></div>
+                        <div className="absolute w-[120%] h-[120%] rounded-full border border-green-200/30 animate-spin-slow" style={{ animationDuration: '12s' }}></div>
+                        <div className="absolute w-2 h-2 top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/80 animate-pulse-slow" style={{ animationDelay: '0.5s' }}></div>
+                      </div>
+                    </div>
+                    
+                    {/* Additional orbiting element 4 - Purple diamond */}
+                    <div className="absolute top-[30%] left-[10%] animate-orbit-counter" style={{ animationDelay: '1.5s' }}>
+                      <div className="w-4 h-4 bg-gradient-to-br from-purple-400/70 to-indigo-500/70 shadow-lg shadow-purple-400/30 animate-glow-pulse rotate-45" style={{ animationDelay: '3s' }}>
+                        <div className="absolute inset-0 border border-white/40 animate-spin-slow" style={{ animationDuration: '8s' }}></div>
+                        <div className="absolute w-1.5 h-1.5 top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 bg-white/80 rounded-full"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Floating glowing elements */}
+                    <div className="absolute top-[15%] right-[20%] w-8 h-8 rounded-full bg-purple-300/30 blur-md animate-float-fast"></div>
+                    <div className="absolute bottom-[25%] right-[25%] w-6 h-6 rounded-full bg-yellow-300/30 blur-md animate-float-medium" style={{ animationDelay: '1.5s' }}></div>
+                    <div className="absolute top-[40%] left-[15%] w-9 h-9 rounded-full bg-blue-300/20 blur-md animate-float-slow" style={{ animationDelay: '2s' }}></div>
+                    <div className="absolute bottom-[40%] right-[10%] w-10 h-10 rounded-full bg-green-300/20 blur-md animate-float-medium" style={{ animationDelay: '2.5s' }}></div>
+                  </div>
+                </div>
+                
                 {/* Main bracelet image */}
                 <motion.div
-                  className="absolute inset-0 z-20"
+                  className="absolute inset-[5%] z-20"
                   variants={braceletAnimation}
                   whileHover="hover"
                   transition={{ 
                     duration: 0.8, 
-                    ease: [0.25, 0.1, 0.25, 1.0],
+                    ease: "easeInOut" as const,
                     delay: 0.3
                   }}
                 >
@@ -199,6 +293,7 @@ export default function Home() {
                         fill
                         className="object-contain drop-shadow-2xl"
                         priority
+                        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 33vw"
                         style={{ 
                           objectFit: 'contain',
                           transform: 'scale(0.9)',
