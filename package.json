@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-      "postinstall": "prisma generate"
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "ts-node src/script/seeder.ts"
@@ -31,6 +31,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
+    "prisma": "^6.15.0",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
