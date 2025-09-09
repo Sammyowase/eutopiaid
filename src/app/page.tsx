@@ -58,20 +58,32 @@ export default function Home() {
   return (
     <div>
       <ScrollProgress />
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#f8fafc] to-[#f1f5f9] overflow-hidden">
-      {/* Scroll progress indicator */}
-      <div className="fixed top-0 left-0 right-0 h-1 z-50">
-        <div className="h-full bg-gradient-to-r from-[var(--deep-blue-light)] to-[var(--professional-red)] w-0 scroll-progress"></div>
-      </div>
+      <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#f8fafc] to-[#f1f5f9] overflow-hidden">
       
       <Header />
       
       <main className="flex-grow relative">
-        {/* Decorative elements */}
+        {/* Enhanced decorative elements */}
         <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-[-10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-blue-50 to-blue-100 opacity-60 blur-3xl animate-float-slow"></div>
-          <div className="absolute bottom-40 left-[-5%] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-red-50 to-red-100 opacity-50 blur-3xl animate-float-medium"></div>
-          <div className="absolute top-[40%] left-[20%] w-[300px] h-[300px] rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 opacity-40 blur-3xl animate-float-fast"></div>
+          {/* Large blue gradient blob */}
+          <div className="absolute top-20 right-[-10%] w-[650px] h-[650px] rounded-full bg-gradient-to-br from-blue-50 via-blue-100/70 to-indigo-50/60 opacity-70 blur-3xl animate-float-slow"></div>
+          
+          {/* Red accent blob */}
+          <div className="absolute bottom-40 left-[-5%] w-[450px] h-[450px] rounded-full bg-gradient-to-tr from-red-50/80 via-red-100/60 to-pink-50/50 opacity-60 blur-3xl animate-float-medium"></div>
+          
+          {/* Small blue accent blob */}
+          <div className="absolute top-[40%] left-[20%] w-[350px] h-[350px] rounded-full bg-gradient-to-r from-blue-50/70 via-indigo-50/60 to-purple-50/50 opacity-50 blur-3xl animate-float-fast"></div>
+          
+          {/* Additional subtle blobs */}
+          <div className="absolute top-[70%] right-[15%] w-[250px] h-[250px] rounded-full bg-gradient-to-tl from-green-50/40 to-blue-50/30 opacity-40 blur-3xl animate-float-medium" style={{ animationDelay: '1s' }}></div>
+          
+          <div className="absolute top-[15%] left-[40%] w-[200px] h-[200px] rounded-full bg-gradient-to-br from-yellow-50/30 to-orange-50/20 opacity-30 blur-3xl animate-float-slow" style={{ animationDelay: '1.5s' }}></div>
+          
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
+          
+          {/* Light beam effect */}
+          <div className="absolute top-0 left-[30%] w-[150px] h-[100vh] bg-gradient-to-b from-blue-100/10 via-white/5 to-transparent transform -rotate-[20deg] animate-float-slow opacity-30 blur-lg"></div>
         </div>
         
         {/* Hero Section */}
@@ -175,57 +187,175 @@ export default function Home() {
                     delay: 0.3
                   }}
                 >
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/images/bracelet-premium.jpg"
-                      alt="Eutopia ID Medical Bracelet"
-                      fill
-                      className="object-contain drop-shadow-2xl"
-                      priority
-                    />
-                    
-                    {/* Animated glow effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse-slow -z-10"></div>
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white/80 backdrop-blur-sm p-6 shadow-xl border border-gray-100">
+                    {/* Enhanced image container with frame effect */}
+                    <div className="relative w-full h-full rounded-xl overflow-hidden">
+                      {/* Shimmer overlay */}
+                      <div className="absolute inset-0 z-20 rounded-xl animate-shimmer opacity-50 pointer-events-none"></div>
+                      
+                      <Image
+                        src="/images/bracelet-premium.jpg"
+                        alt="Eutopia ID Medical Bracelet"
+                        fill
+                        className="object-contain drop-shadow-2xl"
+                        priority
+                        style={{ 
+                          objectFit: 'contain',
+                          transform: 'scale(0.9)',
+                          filter: 'contrast(1.05) brightness(1.02)'
+                        }}
+                      />
+                      
+                      {/* Enhanced glow effects */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-400/30 to-red-400/30 rounded-full blur-3xl animate-pulse-slow -z-10"></div>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-blue-300/20 to-indigo-400/20 rounded-full blur-2xl animate-pulse-slow -z-10" style={{ animationDelay: '1s' }}></div>
+                      
+                      {/* Enhanced shine effect */}
+                      <div className="absolute inset-0 overflow-hidden">
+                        <div className="absolute top-0 left-[-100%] h-full w-[50%] bg-gradient-to-r from-transparent via-white/50 to-transparent transform skew-x-[-20deg] animate-enhanced-shine"></div>
+                      </div>
+                      
+                      {/* Subtle breathing effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-100/10 to-red-100/10 rounded-full animate-breathing"></div>
+                    </div>
                   </div>
                 </motion.div>
                 
-                {/* Floating elements */}
+                {/* Enhanced Floating elements */}
                 <motion.div 
-                  className="absolute top-[10%] right-[5%] w-20 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center z-10"
-                  initial={{ opacity: 0, y: 20, rotate: -5 }}
+                  className="absolute top-[5%] right-[2%] w-24 h-24 bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-xl flex items-center justify-center z-10 overflow-hidden animate-subtle-float"
+                  initial={{ opacity: 0, y: 20, rotate: -5, scale: 0.9 }}
                   animate={{ 
                     opacity: 1, 
                     y: 0, 
                     rotate: 0,
-                    transition: { delay: 0.6, duration: 0.5 } 
+                    scale: 1,
+                    transition: { delay: 0.6, duration: 0.7, ease: [0.25, 0.1, 0.25, 1.0] } 
+                  }}
+                  whileHover={{ 
+                    y: -5, 
+                    scale: 1.05,
+                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                    transition: { duration: 0.3 }
                   }}
                   style={{ transformOrigin: "center center" }}
                 >
-                  <svg className="w-10 h-10 text-[var(--deep-blue-light)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
+                  {/* Decorative corner accent */}
+                  <div className="absolute top-0 right-0 w-12 h-12 bg-blue-100/50 rounded-bl-3xl"></div>
+                  
+                  {/* Icon with subtle animation */}
+                  <div className="relative z-10">
+                    <svg className="w-12 h-12 text-[var(--deep-blue-light)] animate-pulse-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                  </div>
+                  
+                  {/* Subtle shine effect */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    <div className="absolute top-0 left-[-100%] h-full w-[50%] bg-gradient-to-r from-transparent via-white/50 to-transparent transform skew-x-[-20deg] animate-shine" style={{ animationDelay: '1s' }}></div>
+                  </div>
                 </motion.div>
                 
                 <motion.div 
-                  className="absolute bottom-[15%] left-[5%] w-24 h-24 bg-white rounded-lg shadow-lg flex items-center justify-center z-10"
-                  initial={{ opacity: 0, y: 20, rotate: 5 }}
+                  className="absolute bottom-[10%] left-[2%] w-28 h-28 bg-gradient-to-br from-white to-red-50 rounded-2xl shadow-xl flex items-center justify-center z-10 overflow-hidden animate-subtle-float"
+                  initial={{ opacity: 0, y: 20, rotate: 5, scale: 0.9 }}
                   animate={{ 
                     opacity: 1, 
                     y: 0, 
                     rotate: 0,
-                    transition: { delay: 0.8, duration: 0.5 } 
+                    scale: 1,
+                    transition: { delay: 0.8, duration: 0.7, ease: [0.25, 0.1, 0.25, 1.0] } 
+                  }}
+                  whileHover={{ 
+                    y: 5, 
+                    scale: 1.05,
+                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                    transition: { duration: 0.3 }
                   }}
                   style={{ transformOrigin: "center center" }}
                 >
-                  <svg className="w-12 h-12 text-[var(--professional-red)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
+                  {/* Decorative corner accent */}
+                  <div className="absolute top-0 left-0 w-12 h-12 bg-red-100/50 rounded-br-3xl"></div>
+                  
+                  {/* Icon with subtle animation */}
+                  <div className="relative z-10">
+                    <svg className="w-14 h-14 text-[var(--professional-red)] animate-pulse-slow" style={{ animationDelay: '0.5s' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                  </div>
+                  
+                  {/* Subtle shine effect */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    <div className="absolute top-0 left-[-100%] h-full w-[50%] bg-gradient-to-r from-transparent via-white/50 to-transparent transform skew-x-[-20deg] animate-shine" style={{ animationDelay: '2s' }}></div>
+                  </div>
                 </motion.div>
                 
-                {/* Animated rings */}
+                {/* New floating element - medical cross */}
+                <motion.div 
+                  className="absolute top-[40%] right-[-5%] w-20 h-20 bg-gradient-to-br from-white to-blue-50/80 rounded-full shadow-lg flex items-center justify-center z-10 overflow-hidden animate-subtle-float"
+                  initial={{ opacity: 0, x: 20, scale: 0.8 }}
+                  animate={{ 
+                    opacity: 1, 
+                    x: 0, 
+                    scale: 1,
+                    transition: { delay: 1.0, duration: 0.7, ease: [0.25, 0.1, 0.25, 1.0] } 
+                  }}
+                  style={{ transformOrigin: "center center" }}
+                >
+                  <div className="relative z-10">
+                    <svg className="w-10 h-10 text-[var(--professional-red)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </motion.div>
+                
+                {/* Enhanced animated rings */}
                 <div className="absolute inset-0 flex items-center justify-center -z-10">
-                  <div className="w-[80%] h-[80%] rounded-full border-2 border-dashed border-blue-200 animate-spin-slow"></div>
-                  <div className="absolute w-[60%] h-[60%] rounded-full border-2 border-dashed border-red-200 animate-spin-reverse-slow"></div>
+                  {/* Outer ring with gradient */}
+                  <div className="w-[85%] h-[85%] rounded-full border-2 border-dashed border-blue-200 animate-spin-slow relative overflow-hidden">
+                    {/* Gradient overlay on ring */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/30 to-transparent pointer-events-none"></div>
+                  </div>
+                  
+                  {/* Middle ring */}
+                  <div className=" w-[65%] h-[65%] rounded-full border-2 border-dashed border-red-200 animate-spin-reverse-slow relative overflow-hidden">
+                    {/* Gradient overlay on ring */}
+                    <div className="absolute inset-0 bg-gradient-to-bl from-red-200/30 to-transparent pointer-events-none"></div>
+                  </div>
+                  
+                  {/* Inner ring - new */}
+                  <div className=" w-[45%] h-[45%] rounded-full border-2 border-dotted border-indigo-200 animate-spin-slow relative overflow-hidden" style={{ animationDuration: '25s' }}>
+                    {/* Gradient overlay on ring */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-200/30 to-transparent pointer-events-none"></div>
+                  </div>
+                  
+                  {/* Decorative dots at intersections */}
+                  {[...Array(8)].map((_, i) => (
+                    <div 
+                      key={i} 
+                      className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 shadow-sm"
+                      style={{ 
+                        transform: `rotate(${i * 45}deg) translateX(42.5%) translateY(-50%)`,
+                        transformOrigin: 'center center',
+                        opacity: 0.7,
+                        animation: `pulse 3s ease-in-out infinite ${i * 0.2}s`
+                      }}
+                    />
+                  ))}
+                  
+                  {/* Decorative dots on middle ring */}
+                  {[...Array(6)].map((_, i) => (
+                    <div 
+                      key={i} 
+                      className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-red-300 to-red-400 shadow-sm"
+                      style={{ 
+                        transform: `rotate(${i * 60}deg) translateX(32.5%) translateY(-50%)`,
+                        transformOrigin: 'center center',
+                        opacity: 0.7,
+                        animation: `pulse 3s ease-in-out infinite ${i * 0.3 + 0.5}s`
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
             </motion.div>
