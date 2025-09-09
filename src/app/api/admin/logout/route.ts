@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 export async function POST(request: NextRequest) {
   try {
     // Clear the admin token cookie
-    const cookieStore = cookies();
+    const cookieStore = (cookies() as any);
     cookieStore.delete('admin_token');
     
     return NextResponse.json({ success: true });

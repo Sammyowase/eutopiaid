@@ -27,8 +27,9 @@ const verifyAdmin = (request: NextRequest): boolean => {
 // DELETE handler to delete a user by ID
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
+  const { params } = context;
   console.log("DELETE request received for user ID:", params.id);
 
   if (!verifyAdmin(request)) {

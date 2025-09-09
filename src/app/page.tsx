@@ -198,13 +198,17 @@ export default function Home() {
                               : "from-green-400/40 to-emerald-400/40"
                         }`}
                         style={{ 
-                          top: `${50 + 47 * Math.sin(i * (Math.PI / 12))}%`,
-                          left: `${50 + 47 * Math.cos(i * (Math.PI / 12))}%`,
+                          // Use toFixed(5) to ensure consistent string formatting between server and client
+                          top: `${(50 + 47 * Math.sin(i * (Math.PI / 12))).toFixed(5)}%`,
+                          left: `${(50 + 47 * Math.cos(i * (Math.PI / 12))).toFixed(5)}%`,
                           width: i % 6 === 0 ? '5px' : i % 4 === 0 ? '3px' : '2px',
                           height: i % 6 === 0 ? '5px' : i % 4 === 0 ? '3px' : '2px',
-                          opacity: i % 2 === 0 ? 0.9 : 0.5,
-                          animationDelay: `${i * 0.2}s`
-                        }}
+                          // Convert numbers to strings for consistent rendering
+                          opacity: i % 2 === 0 ? '0.9' : '0.5',
+                          // Use CSS custom property for animation delay
+                          '--animation-delay': `${(i * 0.2).toFixed(1)}s`,
+                          animationDelay: `var(--animation-delay)`
+                        } as React.CSSProperties}
                       />
                     ))}
                   </div>
@@ -430,11 +434,16 @@ export default function Home() {
                       key={i} 
                       className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 shadow-sm"
                       style={{ 
-                        transform: `rotate(${i * 45}deg) translateX(42.5%) translateY(-50%)`,
+                        transform: `rotate(${(i * 45).toFixed(1)}deg) translateX(42.5%) translateY(-50%)`,
                         transformOrigin: 'center center',
-                        opacity: 0.7,
-                        animation: `pulse 3s ease-in-out infinite ${i * 0.2}s`
-                      }}
+                        opacity: '0.7',
+                        '--animation-delay': `${(i * 0.2).toFixed(1)}s`,
+                        animationDelay: 'var(--animation-delay)',
+                        animationName: 'pulse',
+                        animationDuration: '3s',
+                        animationTimingFunction: 'ease-in-out',
+                        animationIterationCount: 'infinite'
+                      } as React.CSSProperties}
                     />
                   ))}
                   
@@ -444,11 +453,16 @@ export default function Home() {
                       key={i} 
                       className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-red-300 to-red-400 shadow-sm"
                       style={{ 
-                        transform: `rotate(${i * 60}deg) translateX(32.5%) translateY(-50%)`,
+                        transform: `rotate(${(i * 60).toFixed(1)}deg) translateX(32.5%) translateY(-50%)`,
                         transformOrigin: 'center center',
-                        opacity: 0.7,
-                        animation: `pulse 3s ease-in-out infinite ${i * 0.3 + 0.5}s`
-                      }}
+                        opacity: '0.7',
+                        '--animation-delay': `${(i * 0.3 + 0.5).toFixed(1)}s`,
+                        animationDelay: 'var(--animation-delay)',
+                        animationName: 'pulse',
+                        animationDuration: '3s',
+                        animationTimingFunction: 'ease-in-out',
+                        animationIterationCount: 'infinite'
+                      } as React.CSSProperties}
                     />
                   ))}
                 </div>

@@ -8,7 +8,12 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "prisma": {
+    "seed": "ts-node src/script/seeder.ts"
+  },
   "dependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "bson": "^6.10.4",
     "jsonwebtoken": "^9.0.2",
     "next": "15.5.2",
     "react": "19.1.0",
@@ -18,12 +23,13 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^20",
+    "@types/node": "^20.19.13",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   }
 }

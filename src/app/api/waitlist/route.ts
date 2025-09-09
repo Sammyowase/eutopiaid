@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
       message: 'Successfully joined the waitlist',
       user: {
         id: user.id,
-        name: user.name,
+        name: user.fullName,
         email: user.email
       }
     }, { status: 201 });
