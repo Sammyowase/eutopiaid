@@ -312,19 +312,19 @@ export default function Home() {
                 {/* Enhanced animated rings */}
                 <div className="absolute inset-0 flex items-center justify-center -z-10">
                   {/* Outer ring with gradient */}
-                  <div className="w-[85%] h-[85%] rounded-full border-2 border-dashed border-blue-200 animate-spin-slow relative overflow-hidden">
+                  <div className="w-[85%] h-[85%] rounded-full border-2 border-dashed border-blue-200 animate-spin-slow overflow-hidden">
                     {/* Gradient overlay on ring */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/30 to-transparent pointer-events-none"></div>
                   </div>
                   
                   {/* Middle ring */}
-                  <div className=" w-[65%] h-[65%] rounded-full border-2 border-dashed border-red-200 animate-spin-reverse-slow relative overflow-hidden">
+                  <div className="absolute w-[65%] h-[65%] rounded-full border-2 border-dashed border-red-200 animate-spin-reverse-slow overflow-hidden">
                     {/* Gradient overlay on ring */}
                     <div className="absolute inset-0 bg-gradient-to-bl from-red-200/30 to-transparent pointer-events-none"></div>
                   </div>
                   
                   {/* Inner ring - new */}
-                  <div className=" w-[45%] h-[45%] rounded-full border-2 border-dotted border-indigo-200 animate-spin-slow relative overflow-hidden" style={{ animationDuration: '25s' }}>
+                  <div className="absolute w-[45%] h-[45%] rounded-full border-2 border-dotted border-indigo-200 animate-spin-slow overflow-hidden" style={{ animationDuration: '25s' }}>
                     {/* Gradient overlay on ring */}
                     <div className="absolute inset-0 bg-gradient-to-r from-indigo-200/30 to-transparent pointer-events-none"></div>
                   </div>
