@@ -11,6 +11,7 @@ import { useSearchParams } from 'next/navigation';
 export default function ThankYouPage() {
   const searchParams = useSearchParams();
   const name = searchParams.get('name') || 'there';
+  const isExisting = searchParams.get('existing') === 'true';
   
   // Animation variants
   const fadeIn = {
@@ -167,7 +168,7 @@ export default function ThankYouPage() {
               className="text-4xl md:text-5xl font-bold text-[var(--deep-blue-dark)] mb-6"
               variants={fadeIn}
             >
-              You're Officially on the Waitlist! 🎉
+              {isExisting ? 'Welcome Back! 👋' : 'You\'re Officially on the Waitlist! 🎉'}
             </motion.h1>
             
             {/* Message with elegant gradient glow */}
@@ -184,9 +185,19 @@ export default function ThankYouPage() {
                   </svg>
                 </div>
                 <p className="text-lg sm:text-xl">
-                  Thanks, <span className="font-semibold text-[var(--deep-blue-light)]">{name}</span>! 
-                  <span className="block mt-2">You'll be the first to know when Eutopia ID launches.</span>
-                  <span className="block mt-2 text-gray-600">Until then, share this with someone you love — because their life matters too.</span>
+                  {isExisting ? (
+                    <>
+                      Welcome back, <span className="font-semibold text-[var(--deep-blue-light)]">{name}</span>! 
+                      <span className="block mt-2">You're already on our waitlist, so you're all set!</span>
+                      <span className="block mt-2 text-gray-600">We appreciate your enthusiasm and will notify you when Eutopia ID launches.</span>
+                    </>
+                  ) : (
+                    <>
+                      Thanks, <span className="font-semibold text-[var(--deep-blue-light)]">{name}</span>! 
+                      <span className="block mt-2">You'll be the first to know when Eutopia ID launches.</span>
+                      <span className="block mt-2 text-gray-600">Until then, share this with someone you love — because their life matters too.</span>
+                    </>
+                  )}
                 </p>
               </div>
             </motion.div>

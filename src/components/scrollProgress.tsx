@@ -1,14 +1,16 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 export default function ScrollProgress() {
   const [scroll, setScroll] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const controls = useAnimation();
+  const isMounted = useRef(false);
 
+  // Handle scroll position and visibility state
   useEffect(() => {
     const handleScroll = () => {
       const scrolled =
@@ -18,21 +20,35 @@ export default function ScrollProgress() {
       // Show progress bar only when scrolling starts
       if (window.scrollY > 50 && !isVisible) {
         setIsVisible(true);
-        controls.start({ 
-          opacity: 1,
-          transition: { duration: 0.3 }
-        });
       } else if (window.scrollY <= 50 && isVisible) {
         setIsVisible(false);
-        controls.start({ 
-          opacity: 0,
-          transition: { duration: 0.3 }
-        });
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, [isVisible]);
+
+  // Handle animation separately based on visibility state
+  useEffect(() => {
+    // Skip the initial render
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
+    
+    // Only animate after component is mounted
+    if (isVisible) {
+      controls.start({ 
+        opacity: 1,
+        transition: { duration: 0.3 }
+      });
+    } else {
+      controls.start({ 
+        opacity: 0,
+        transition: { duration: 0.3 }
+      });
+    }
   }, [isVisible, controls]);
 
   return (

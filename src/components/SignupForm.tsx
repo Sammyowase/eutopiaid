@@ -26,6 +26,8 @@ const SignupForm: React.FC = () => {
   
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [alreadyOnWaitlist, setAlreadyOnWaitlist] = useState(false);
   
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -59,19 +61,54 @@ const SignupForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Reset error states
+    setFormError(null);
+    setAlreadyOnWaitlist(false);
+    
     if (!validateForm()) return;
     
     setIsSubmitting(true);
     
     try {
-      // This would be replaced with an actual API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Submit to the waitlist API
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phoneNumber,
+          location: formData.location,
+          buyingFor: formData.buyingFor
+        }),
+      });
       
-      // Redirect to thank you page with the user's name
+      const data = await response.json();
+      
+      if (!response.ok) {
+        // Special handling for already on waitlist error (status 409)
+        if (response.status === 409) {
+          console.log('User already on waitlist:', formData.email);
+          setAlreadyOnWaitlist(true);
+          // Still redirect to thank you page for good user experience
+          window.location.href = `/thank-you?name=${encodeURIComponent(formData.fullName)}&existing=true`;
+          return;
+        }
+        
+        // Handle other errors
+        setFormError(data.message || 'Failed to join waitlist');
+        throw new Error(data.message || 'Failed to join waitlist');
+      }
+      
+      // Successful submission - redirect to thank you page with the user's name
       window.location.href = `/thank-you?name=${encodeURIComponent(formData.fullName)}`;
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('There was an error submitting your information. Please try again.');
+      if (!formError) {
+        setFormError('There was an error submitting your information. Please try again.');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -98,6 +135,12 @@ const SignupForm: React.FC = () => {
       </p>
       
       <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+        {/* Form error message */}
+        {formError && (
+          <div className="p-3 rounded-md bg-red-50 border border-red-200 text-red-600 text-sm">
+            {formError}
+          </div>
+        )}
         {/* Name field with icon */}
         <div className="slide-up" style={{ animationDelay: '100ms' }}>
           <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
