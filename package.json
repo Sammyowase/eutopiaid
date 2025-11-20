@@ -10,7 +10,7 @@
     "postinstall": "prisma generate"
   },
   "prisma": {
-    "seed": "ts-node src/script/seeder.ts"
+    "seed": "ts-node --compiler-options {\\\"module\\\":\\\"commonjs\\\"} src/script/seeder.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^9.9.0",

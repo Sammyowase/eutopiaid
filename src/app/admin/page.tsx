@@ -88,6 +88,12 @@ const AdminDashboard: React.FC = () => {
 
   // Handle user deletion
   const handleDeleteUser = async (userId: string) => {
+    // Check if user still exists in state (prevent double-delete)
+    if (!users.find(user => user.id === userId)) {
+      console.log('User already deleted from state');
+      return;
+    }
+    
     setDeleteStatus({ loading: true, error: null });
     
     try {
@@ -96,7 +102,6 @@ const AdminDashboard: React.FC = () => {
       const url = `${baseUrl}/api/admin/users/${userId}`;
       
       console.log('Deleting user with ID:', userId);
-      console.log('Delete URL:', url);
       
       const response = await fetch(url, {
         method: 'DELETE',
@@ -109,11 +114,18 @@ const AdminDashboard: React.FC = () => {
       const data = await response.json();
       
       if (!response.ok) {
-        console.error('Delete response error:', data);
+        // If user not found, it might have been deleted already - just update UI
+        if (response.status === 404) {
+          console.log('User not found in database, removing from UI');
+          setUsers(users.filter(user => user.id !== userId));
+          setDeleteStatus({ loading: false, error: null });
+          return;
+        }
+        
         throw new Error(data.message || 'Failed to delete user');
       }
       
-      console.log('Delete response:', data);
+      console.log('User deleted successfully');
       
       // Remove the user from the state
       setUsers(users.filter(user => user.id !== userId));

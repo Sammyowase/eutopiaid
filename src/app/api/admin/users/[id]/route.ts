@@ -6,10 +6,10 @@ import { prisma } from "@/lib/prisma";
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 
 // Verify admin authentication
-const verifyAdmin = (request: NextRequest): boolean => {
+const verifyAdmin = async (request: NextRequest): Promise<boolean> => {
   try {
-    const cookieStore = cookies();
-    const token = (cookies()as any).get("admin_token")?.value;
+    const cookieStore = await cookies();
+    const token = cookieStore.get("admin_token")?.value;
 
     if (!token) return false;
 
@@ -33,7 +33,7 @@ export async function DELETE(
   const { id } = await context.params;  // 👈 await is required now
   console.log("DELETE request received for user ID:", id);
 
-  if (!verifyAdmin(request)) {
+  if (!(await verifyAdmin(request))) {
     console.log("Authentication failed for delete request");
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
